@@ -23,13 +23,13 @@ if ( @$_GET['action'] == 'delete') {
 	}
 }
 
-// вызываем фуекцию получения фильмов из базы
-$films = films_all($link);
+// вызываем фуекцию получения одного фильма из базы
+$film = get_film($link, $_GET['id']);
 
 // подключаем шаблоны страницы
 include('views/head.tpl');
 include('views/notifications.tpl');
-include('views/index.tpl');
+include('views/film-single.tpl');
 include('views/footer.tpl');
 
 ?>
