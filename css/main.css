@@ -474,6 +474,14 @@ a.badge:active {
 .card-wrapper-fixed-size {
   width: 360px;
 }
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.card__header .title-4 {
+  margin-top: 0px;
+}
 .comment-register {
   background-color: #f6f7f8;
   padding: 50px 0;
@@ -1153,6 +1161,11 @@ fieldset {
 .notify--error {
   background-image: -webkit-linear-gradient(90deg, #971515 0%, #c93232 100%);
   background-image: -ms-linear-gradient(90deg, #971515 0%, #c93232 100%);
+  color: #fff;
+}
+.notify--info {
+  background-image: -webkit-linear-gradient(90deg, #FECC47 0%, #FE8A0D 100%);
+  background-image: -ms-linear-gradient(90deg, #FECC47 0%, #FE8A0D 100%);
   color: #fff;
 }
 .no-radius-top {
