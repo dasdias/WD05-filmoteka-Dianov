@@ -15,6 +15,7 @@ require('models/films.php');
 $film = get_film($link, $_GET['id']);
 
 $errors = array();
+$addFile = add_file();
 /*
 echo "<pre>";
 print_r($_GET);
@@ -37,7 +38,7 @@ if ( array_key_exists('updateFilm', $_POST) ) {
 	
 	if ( empty($errors) ) {
 
-		$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_GET['id'], $_POST['description']);
+		$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_GET['id'], $_POST['description'], $addFile);
 		if ( $result ) {
 			$resultSuccess = "Фильм был успешно обновлен!";
 		} else { 

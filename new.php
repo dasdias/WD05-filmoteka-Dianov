@@ -11,6 +11,11 @@ $link = db_connect();
 // модель для работы с фильмами
 require('models/films.php');
 
+$addFile = add_file();
+
+/*echo("<pre>");
+print_r($addFile);
+echo("</pre>");*/
 
 if ( array_key_exists('newFilm', $_POST) ) { // проверяем присутствие в массиве значение newFilm
 	
@@ -27,7 +32,7 @@ if ( array_key_exists('newFilm', $_POST) ) { // проверяем присут�
 
 	// Если ошибок нет - сохраняем фильм
 	if ( empty($errors) ) {
-		$result = film_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description']);
+		$result = film_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $addFile);
 		if ( $result ) {
 			$resultSuccess = "Фильм был успешно добавлен!";
 		} else { 
