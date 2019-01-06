@@ -1,7 +1,7 @@
 <h1 class="title-1">Редактировать фильм</h1>
 
 <div class="panel-holder mt-30 mb-100">
-	<form action="edit.php?id=<?=$film['id']?>" method="POST">
+	<form enctype="multipart/form-data" action="edit.php?id=<?=$film['id']?>" method="POST">
 
 		<?php 
 			if ( !empty($errors)) {
@@ -32,6 +32,10 @@
 				</div>
 			</div>
 		</div>
-		<input class="button" type="submit" name="updateFilm" value="Обновить" />
+		<textarea class="textarea" name="description" placeholder="Введите описание фильма"><?=$film['description']?></textarea>
+		<div class="mt-20">
+			<input type="file" name="photo" /> 
+		</div>
+		<input class="button mt-20" type="submit" name="updateFilm" value="Обновить" />
 	</form>
 </div>
