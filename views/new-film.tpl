@@ -1,6 +1,6 @@
 <div class="panel-holder mt-80 mb-40">
 	<div class="title-3 mt-0">Добавить фильм</div>
-	<form action="new.php" method="POST">
+	<form enctype="multipart/form-data" action="new.php" method="POST">
 
 		<?php 
 			if ( !empty($errors) ) { 
@@ -32,6 +32,9 @@
 			</div>
 		</div>
 		<textarea class="textarea" name="description" placeholder="Введите описание фильма"></textarea>
+		<div class="mt-20">
+			<input type="file" name="photo" /> 
+		</div>
 		<input class="button mt-20" type="submit" name="newFilm" value="Добавить" />
 	</form>
 </div>
