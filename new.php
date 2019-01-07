@@ -10,6 +10,7 @@ $link = db_connect();
 
 // модель для работы с фильмами
 require('models/films.php');
+require('functions/login-function.php');
 
 $addFile = add_file();
 
