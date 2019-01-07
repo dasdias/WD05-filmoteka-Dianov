@@ -21,9 +21,9 @@
 				<input type="submit" class="button" value="Вход" name="enter">
 			</div>
 		</form>
-		<form action="unset-cookie.php" method="POST">
+		<!-- <form action="unset-cookie.php" method="POST">
 			<input type="submit" class="button" value="Удалить данные" name="user-unset">
-		</form>
+		</form> -->
 
 
 		<!-- <form action="unset-cookie.php" method="POST">
