@@ -5,6 +5,8 @@ define('MYSQL_PASSWORD', '');
 define('MYSQL_DB', 'wd05-filmoteka-dianov');
 define('HOST', 'http://'. $_SERVER['HTTP_HOST'] .'/');
 define('ROOT', dirname(__FILE__) . '/');
+session_start();
+// session_destroy();
 
 /*echo("<pre>");
 print_r($_SERVER);

@@ -12,6 +12,20 @@ function films_all($link){
 	}
 	return $films;
 }
+// Получение фильмов из базы
+function get_login($link){
+	$query = "SELECT * FROM login";
+	$login = array();
+
+	if ( $result = mysqli_query( $link, $query ) ) {
+		while ( $row = mysqli_fetch_array($result) ) {
+			$login[] = $row;
+		}
+	}
+	return $login;
+}
+
+// обработка файла 
 function add_file(){
 
 /*echo("<pre>");
