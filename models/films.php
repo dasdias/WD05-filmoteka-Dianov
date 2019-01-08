@@ -12,7 +12,15 @@ function films_all($link){
 	}
 	return $films;
 }
-// Получение фильмов из базы
+// получаем одну запись о пользователе
+function get_user($link, $login, $password){
+	$query = "SELECT * FROM login WHERE login= '" . mysqli_real_escape_string($link, $login) . "' AND password= '" . mysqli_real_escape_string($link, $password) . "' LIMIT 1";
+	if ( $result = mysqli_query($link, $query) ) {
+		$user = mysqli_fetch_array($result);
+	} 
+	return $user;
+}
+// Получение логина и пароля из базы
 function get_login($link){
 	$query = "SELECT * FROM login";
 	$login = array();
@@ -79,51 +87,7 @@ echo("</pre>");*/
 }
 
 // Функция сохранения данных из POST в DB
-function film_new($link, $title, $genre, $year, $description, $addFile){
-
-	/*if ( isset($_FILES['photo']['name']) && $_FILES['photo']['tmp_name'] != ""  ) {
-		$fileName = $_FILES["photo"]["name"];
-		$fileTmpLoc = $_FILES["photo"]["tmp_name"];
-		$fileType =  $_FILES["photo"]["type"];
-		$fileSize =  $_FILES["photo"]["size"];
-		$fileErrorMsg =  $_FILES["photo"]["error"];
-		$kaboom = explode(".", $fileName);
-		$fileExt = end($kaboom);
-
-		list($width, $height) = getimagesize($fileTmpLoc);
-		if($width < 10 || $height < 10){
-			$errors[] = 'That image has no dimensions';
-		}
-
-		$db_file_name = rand(10000000, 99999999) . "." . $fileExt;
-		if($fileSize > 10485760) {
-			$errors[] = 'Your image file was larger than 10mb';
-		} else if (!preg_match("/\.(gif|jpg|png|jpeg)$/i", $fileName) ) {
-			$errors[] = 'Your image file was not jpg, jpeg, gif or png type';
-		} else if ($fileErrorMsg == 1) {
-			$errors[] = 'An unknown error occurred';
-		}
-
-		$photoFolderLocation = ROOT . 'data/films/full/';
-		$photoFolderLocationMin = ROOT . 'data/films/min/';
-		// $photoFolderLocationFull = ROOT . 'data/films/full/';
-
-		$uploadfile = $photoFolderLocation . $db_file_name;
-		$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
-
-		if ($moveResult != true) {
-			$errors[] = 'File upload failed';
-		}
-
-		require_once( ROOT . "/functions/image_resize_imagick.php");
-		$target_file =  $photoFolderLocation . $db_file_name;
-		$resized_file = $photoFolderLocationMin . $db_file_name;
-		$wmax = 137;
-		$hmax = 200;
-		$img = createThumbnail($target_file, $wmax, $hmax);
-		$img->writeImage($resized_file);
-
-	}*/
+function film_new($link, $title, $genre, $year, $description, $addFile){	
 
 	// Запись в DB
 	$query ="INSERT INTO films (title, genre, year, description, photo) VALUES (
@@ -153,51 +117,7 @@ function get_film($link, $id){
 	return $film;
 }
 // обновление существующей записи в базе
-function film_update($link, $title, $genre, $year, $id, $description, $addFile){
-
-	/*if ( isset($_FILES['photo']['name']) && $_FILES['photo']['tmp_name'] != ""  ) {
-		$fileName = $_FILES["photo"]["name"];
-		$fileTmpLoc = $_FILES["photo"]["tmp_name"];
-		$fileType =  $_FILES["photo"]["type"];
-		$fileSize =  $_FILES["photo"]["size"];
-		$fileErrorMsg =  $_FILES["photo"]["error"];
-		$kaboom = explode(".", $fileName);
-		$fileExt = end($kaboom);
-
-		list($width, $height) = getimagesize($fileTmpLoc);
-		if($width < 10 || $height < 10){
-			$errors[] = 'That image has no dimensions';
-		}
-
-		$db_file_name = rand(10000000, 99999999) . "." . $fileExt;
-		if($fileSize > 10485760) {
-			$errors[] = 'Your image file was larger than 10mb';
-		} else if (!preg_match("/\.(gif|jpg|png|jpeg)$/i", $fileName) ) {
-			$errors[] = 'Your image file was not jpg, jpeg, gif or png type';
-		} else if ($fileErrorMsg == 1) {
-			$errors[] = 'An unknown error occurred';
-		}
-
-		$photoFolderLocation = ROOT . 'data/films/full/';
-		$photoFolderLocationMin = ROOT . 'data/films/min/';
-		// $photoFolderLocationFull = ROOT . 'data/films/full/';
-
-		$uploadfile = $photoFolderLocation . $db_file_name;
-		$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
-
-		if ($moveResult != true) {
-			$errors[] = 'File upload failed';
-		}
-
-		require_once( ROOT . "/functions/image_resize_imagick.php");
-		$target_file =  $photoFolderLocation . $db_file_name;
-		$resized_file = $photoFolderLocationMin . $db_file_name;
-		$wmax = 137;
-		$hmax = 200;
-		$img = createThumbnail($target_file, $wmax, $hmax);
-		$img->writeImage($resized_file);
-
-	}*/
+function film_update($link, $title, $genre, $year, $id, $description, $addFile){	
 
 	$query = "	UPDATE films 
 				SET title = '". mysqli_real_escape_string($link, $title) ."', 
